@@ -24,5 +24,7 @@ makeAPromise('reject').then(
 );
 console.log('first');
 ```
+
+A look to the [promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all).
 ## React-DevTools
 ## Debuggin & sourcemaps
