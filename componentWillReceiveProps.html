@@ -1,0 +1,99 @@
+<html>
+  <head>
+    <title>About me.</title>
+    <script src="http://felixdrp.github.io/lib/bower_components/react/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <!-- Load timetable data -->
+    <script src="http://felixdrp.github.io/data/stevenson-building.js"></script>
+    <script src="data/stevenson-building.js"></script>
+    <script type="text/babel" src="src/timetable.js"></script>
+  </head>
+  <body>
+    <div id="App"></div>
+
+    <script type="text/babel">
+
+var Main = React.createClass({
+  getInitialState: function() {
+    return {
+      childText: 'Hello'
+    };
+  },
+
+  sayHello: function(e) {
+    this.setState( { childText: e.target.value } );
+  },
+
+  render: function() {
+    var style = {margin: '10px 0', fontSize:'15px'};
+    return (
+      <div style={{color: '#555'}}>
+        <h3>
+          Component Live: componentWillReceiveProps
+        </h3>
+        
+        <div>
+          <input type="button" value="Hola" onClick={ this.sayHello } style={style}/>
+        </div>
+        
+        <div>
+          <input type="button" value="Hi" onClick={ this.sayHello } style={style}/>
+        </div>
+        
+        <Child text={this.state.childText} />
+        <ChildState text={this.state.childText} />
+      </div>
+          );
+      }
+    });
+
+var Child = React.createClass({
+  render: function() {
+    return (
+      <div>
+        <h2 style={{textDecoration: 'underline'}}>
+          a. Component child using props:
+        </h2>
+        <h3>
+          {this.props.text}
+        </h3>
+      </div>
+    );
+  }
+});
+
+var ChildState = React.createClass({
+  getInitialState: function() {
+    return {
+      text: this.props.text
+    };
+  },
+/*
+  componentWillReceiveProps: function(nextProps) {
+    this.setState({
+      text: nextProps.text
+    });
+  },
+*/
+  render: function() {
+    return (
+      <div>
+        <h2 style={{textDecoration: 'underline'}}>
+          b. Component child using state:
+        </h2>
+        <h3>
+          {this.state.text}
+        </h3>
+      </div>
+    );
+  }
+});
+
+React.render(
+  <Main />,
+  document.getElementById('App')
+);
+
+    </script>
+  </body>
+</html>
