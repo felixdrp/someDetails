@@ -2,7 +2,7 @@
 
 ## React Component Live: componentWillReceiveProps
 ## new Promises
-```
+```js
 function makeAPromise(text) {
   return new Promise(function(resolve, reject) {
     window.setTimeout(
